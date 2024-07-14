@@ -317,7 +317,7 @@ async def tts_post_endpoint(request: TTS_Request):
 @app.post("/tts_to_audio/")
 async def tts_to_audio(request: TTS_Request):
     req = request.dict()
-    from text_speech.utils.config import llama_seed
+    from text2speech.utils.config import llama_seed
 
     req["seed"] = llama_seed
 

@@ -119,7 +119,7 @@ def text_normalize(text):
     :param text:
     :return:
     """
-    # from text_speech.utils.zh_normalization import TextNormalizer
+    # from text2speech.utils.zh_normalization import TextNormalizer
     # # ref: https://github.com/PaddlePaddle/PaddleSpeech/tree/develop/paddlespeech/t2s/frontend/zh_normalization
     # tx = TextNormalizer()
     # sentences = tx.normalize(text)
@@ -206,7 +206,7 @@ def normalize_en(text):
     # from tn.english.normalizer import Normalizer
     # normalizer = Normalizer()
     # text = normalizer.normalize(text)
-    from text_speech.utils.normalizer import normalize
+    from text2speech.utils.normalizer import normalize
 
     text = remove_english_punctuation(text)
     text=normalize(text)
