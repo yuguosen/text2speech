@@ -333,8 +333,6 @@ class ChatTTSParams(BaseModel):
     use_decoder: bool = True
     do_text_normalization: bool = True
     do_homophone_replacement: bool = False
-    audio_seed: int=12345678
-    text_seed: int=87654321
     params_refine_text: ChatTTS.Chat.RefineTextParams=None
     params_infer_code: ChatTTS.Chat.InferCodeParams=None
 
@@ -362,27 +360,27 @@ async def generate_voice(request: TTSRequest):
     logger.info("Text input: %s", str(params.text))
 
     # audio seed
-    if params.audio_seed:
-        torch.manual_seed(params.audio_seed)
-        params.params_infer_code.spk_emb = chat.sample_random_speaker()
-
-    # text seed for text refining
-    if params.params_refine_text:
-        torch.manual_seed(params.text_seed)
-        text = chat.infer(
-            text=params.text, skip_refine_text=False, refine_text_only=True
-        )
-        logger.info(f"Refined text: {text}")
-    else:
-        # no text refining
-        text = params.text
+    # if params.audio_seed:
+    #     torch.manual_seed(params.audio_seed)
+    #     params.params_infer_code.spk_emb = chat.sample_random_speaker()
+    #
+    # # text seed for text refining
+    # if params.params_refine_text:
+    #     torch.manual_seed(params.text_seed)
+    #     text = chat.infer(
+    #         text=params.text, skip_refine_text=False, refine_text_only=True
+    #     )
+    #     logger.info(f"Refined text: {text}")
+    # else:
+    #     # no text refining
+    #     text = params.text
 
     logger.info("Use speaker:")
     logger.info(params.params_infer_code.spk_emb)
 
     logger.info("Start voice inference.")
     wavs = chat.infer(
-        text=text,
+        text=params.text,
         stream=params.stream,
         lang=params.lang,
         skip_refine_text=params.skip_refine_text,

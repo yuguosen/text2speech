@@ -29,8 +29,8 @@ def get_tts():
             "Post like top YouTubers and accelerate your growth with top-quality hooks. Don't let CapCut hold you back, a great hook is 99% of what makes your video go viral",
             ''' 比如'''
         ],
-        "stream": False,
-        "speaker_index": 1,
+        "stream": True,
+        "speaker_index": 5,
     }
 
     try:
