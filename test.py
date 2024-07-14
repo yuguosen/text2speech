@@ -22,8 +22,8 @@ torch.set_float32_matmul_precision('high')
 
 
 # 将模型文件download到本地
-#model_dir = snapshot_download('pzc163/chatTTS',cache_dir='./model_cache/chat_tts')
-model_dir="model_cache"
+model_dir = snapshot_download('pzc163/chatTTS',cache_dir='./model_cache/chat_tts')
+#model_dir="model_cache"
 
 def get_spk_emb(speaker_index):
     # 从 JSON 文件中读取数据

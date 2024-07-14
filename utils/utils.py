@@ -206,7 +206,7 @@ def normalize_en(text):
     # from tn.english.normalizer import Normalizer
     # normalizer = Normalizer()
     # text = normalizer.normalize(text)
-    from text2speech.utils.normalizer import normalize
+    from .normalizer import normalize
 
     text = remove_english_punctuation(text)
     text=normalize(text)
