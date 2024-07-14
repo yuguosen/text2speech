@@ -410,7 +410,7 @@ async def generate_voice(request: TTSRequest):
 
 
 if __name__ == "__main__":
-    chat.load(source="custom", custom_path="model_cache", compile=False)
+    chat.load(source="custom", custom_path="model_cache", compile=True)
 
     # chat = load_chat_tts_model(source="local", local_path="models")
 
